@@ -33,3 +33,40 @@ for k in range(h):
                 dfs(i,j)
     num = max(num,cnt)
 print(num)
+
+
+
+***다른 버전***
+
+n=int(input())
+graph=[]
+graph = [list(map(int, input().split())) for _ in range(n)]
+
+h = max(max(graph))
+
+dx=[-1,1,0,0]
+dy=[0,0,-1,1]
+
+def dfs(x,y):
+
+    if x < 0 or y < 0 or x>=n or y>=n:
+        return False
+    if visit[x][y]== 0 and graph[x][y]>k:
+        visit[x][y] = 1
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            dfs(nx,ny)
+        return True
+
+num=1
+for k in range(h):
+    cnt = 0
+    visit = [[0] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if dfs(i,j) == True:
+                cnt+=1
+    num = max(num,cnt)
+print(num)
+
