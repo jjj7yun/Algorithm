@@ -1,0 +1,6 @@
+s=str(input())
+num = [int(i) for i in s]
+result=num[0]
+for i in range(1,len(num)):
+    result = max(result+num[i],result*num[i])
+print(result)
