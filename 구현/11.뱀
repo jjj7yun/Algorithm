@@ -1,0 +1,17 @@
+from sys import stdin
+r= stdin.readline
+n = int(r())
+k=int(r())
+graph=[[0]*n]*n
+apple=[list(map(int,r().split())) for _ in range(k)]
+
+l=int(r())
+second=[]
+step=[]
+for _ in range(l):
+    step.append(r().rstrip())
+print(apple)
+print(step)
+print(graph)
+print(step[0])
+print(step[0][0])
