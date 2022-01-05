@@ -1,0 +1,10 @@
+n,m=map(int,input().split())
+bl=list(map(int,input().split()))
+count=0
+
+for i in range(n):
+    for k in range(i+1,n):
+        if bl[k]!=bl[i]:
+            count+=1
+            print(bl[i],bl[k])
+print(count)
