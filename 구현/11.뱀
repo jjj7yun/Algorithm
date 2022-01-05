@@ -2,16 +2,61 @@ from sys import stdin
 r= stdin.readline
 n = int(r())
 k=int(r())
-graph=[[0]*n]*n
-apple=[list(map(int,r().split())) for _ in range(k)]
-
+graph=[[0]*(n+1) for _ in range(n+1)]
+for _ in range(k):
+    a,b=map(int,r().split())
+    graph[a][b] = 1
 l=int(r())
 second=[]
 step=[]
 for _ in range(l):
+    a,b=r().split()
+    second.append(int(a))
+    step.append(b)
     step.append(r().rstrip())
-print(apple)
-print(step)
-print(graph)
-print(step[0])
-print(step[0][0])
+x,y=1,1
+
+dx=[1,0,-1,0]
+dy=[0,1,0,-1]
+
+def turn(dr,c):
+    if c == 'D':
+        dr = (dr+1)%4
+    else:
+        dr = (dr-1)%4
+    return dr
+
+def simulate():
+    x,y=1,1
+    time = 0
+    dr =0
+    i=0
+    graph[x][y]=2
+    q=[(x,y)]
+    while True:
+        nx = x + dx[dr]
+        ny = y + dy[dr]
+        if 1<= nx <= n and 1 <= ny <= n and graph[x][y]!=2 :
+            if graph[nx][ny]==0:
+                graph[nx][ny]=2
+                q.append((nx,ny))
+                px,py=q.pop(0)
+                graph[px][py]=0
+            if graph[nx][ny]==1:
+                graph[nx][ny]=2
+                q.append((nx,ny))
+
+        else:
+            time+=1
+            break
+        x,y = nx,ny
+        time+=1
+
+        if i<1 and second[i] == time:
+            dr = turn(dr,step[i])
+            i+=1
+    return time
+print(simulate())
+
+
+
