@@ -1,26 +1,34 @@
-from bisect import bisect_left, bisect_right
-from sys import stdin
-r=stdin.readline
-n,c = map(int,r().split())
-graph=[0]*(n+1)
-array=[]
-for _ in range(n):
-    data = int(r())
-    array.append(data)
-    graph[data]=data
-start=1
-end=array[-1]-array[0]
-answer=0
+n, c = map(int, input().split())
 
-def binary_research(array,start,end):
+array = []
+for i in range(n):
+    array.append(int(input()))
 
-    while start<=end:
-        mid = (start + mid) // 2
+array.sort()
+
+
+def binary_search(array, start, end):
+    while start <= end:
+        mid = (start + end) // 2
+        current = array[0]
         count = 1
-        now = array[0]
-        for i in range(1,len(array)):
-            if array[i] >= mid + now:
-                count+=1
-                
+
+        for i in range(1, len(array)):
+            if array[i] >= current + mid:
+                count += 1
+                current = array[i]
+
+        if count >= c:
+            global answer
+            start = mid + 1
+            answer = mid
+        else:
+            end = mid - 1
 
 
+start = 1
+end = array[-1] - array[0]
+answer = 0
+
+binary_search(array, start, end)
+print(answer)
