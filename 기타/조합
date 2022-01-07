@@ -7,7 +7,7 @@ from iterrols import permutations
 data=['a','b','c']
 result = list(permutations(data,3))
 > a,b,c 3개뽑을수 있는 모든 경우 출력
-[('a', 'b'), ('a', 'c'), ('b', 'a'), ('b', 'c'), ('c', 'a'), ('c', 'b')]
+[('a', 'b', 'c'), ('a', 'c', 'b'), ('b', 'a', 'c'), ('b', 'c', 'a'), ('c', 'a', 'b'), ('c', 'b', 'a')]
 
 
 from itertools import product
