@@ -1,0 +1,20 @@
+from iterrols import combinations
+data=['a','b','c']
+
+[('a', 'b'), ('a', 'c'), ('b', 'c')]
+
+from iterrols import permutations
+data=['a','b','c']
+result = list(permutations(data,3))
+> a,b,c 3개뽑을수 있는 모든 경우 출력
+[('a', 'b'), ('a', 'c'), ('b', 'a'), ('b', 'c'), ('c', 'a'), ('c', 'b')]
+
+
+from itertools import product
+
+result = list(product(data, repeat=2))
+[('a', 'a'), ('a', 'b'), ('a', 'c'), ('b', 'a'), ('b', 'b'), ('b', 'c'), ('c', 'a'), ('c', 'b'), ('c', 'c')]
+
+from itertools import combinations_with_replacement
+result = list(combinations_with_replacement(data,2))
+[('a', 'a'), ('a', 'b'), ('a', 'c'), ('b', 'b'), ('b', 'c'), ('c', 'c')]
