@@ -37,7 +37,7 @@ count=[0]*(max(array)+1)
 등장수만큼 count[array[i]]+=1 > print(count[i])
 
 
-###이진탐색
+###
 데이터 정렬 되어 있을 때만.
 (시작점, 끝점, 중간점)
 bisect모듈 사용!!
