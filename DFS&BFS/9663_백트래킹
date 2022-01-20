@@ -1,0 +1,23 @@
+n= int(input())
+grp=[0]*(n+1)
+
+def chk(x):
+    for i in range(x):
+        if grp[i] == grp[x] or abs(grp[x]-grp[i]) == x-i:
+            return False
+    return True
+
+
+result=0
+def dfs(x):
+    global result
+    if x >= n :
+        result+=1
+    for i in range(n):
+        grp[x]=i
+        if chk(x) == True:
+            dfs(x+1)
+    return result
+
+dfs(0)
+print(result)
