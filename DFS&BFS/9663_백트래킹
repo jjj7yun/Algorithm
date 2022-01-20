@@ -1,24 +1,20 @@
-n= int(input())
-grp=[0]*(n+1)
-
-def chk(x):
-    for i in range(x):
-        if grp[i] == grp[x] or abs(grp[x]-grp[i]) == x-i:
-            return False
-    return True
+##시간초과나서 고민 많이 한 문제
 
 
-result=0
-def dfs(x):
-    global result
-    if x >= n :
-        result+=1
-        return 
-    for i in range(n):
-        grp[x]=i
-        if chk(x) == True:
-            dfs(x+1)
-    return result
+n, ans = int(input()), 0
+a, b, c = [False]*n, [False]*(2*n-1), [False]*(2*n-1)
 
-dfs(0)
-print(result)
+def solve(i):
+    global ans
+    if i == n:
+        ans += 1
+        return
+    for j in range(n):
+        if not (a[j] or b[i+j] or c[i-j+n-1]):
+            a[j] = b[i+j] = c[i-j+n-1] = True
+            solve(i+1)
+            a[j] = b[i+j] = c[i-j+n-1] = False
+
+solve(0)
+print(ans)
+
