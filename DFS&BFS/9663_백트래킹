@@ -13,6 +13,7 @@ def dfs(x):
     global result
     if x >= n :
         result+=1
+        return 
     for i in range(n):
         grp[x]=i
         if chk(x) == True:
